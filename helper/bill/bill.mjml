@@ -1,0 +1,64 @@
+<mjml>
+  <mj-head> </mj-head>
+  <mj-body>
+    <mj-container>
+      <mj-section>
+        <mj-column>
+          <mj-text
+            font-size="24px"
+            font-weight="bold"
+            align="center"
+            text-decoration="underline"
+            padding-bottom="10px"
+            >User Invoice</mj-text
+          >
+        </mj-column>
+      </mj-section>
+
+      <!-- User Information and Invoice Details -->
+      <mj-section>
+        <mj-column width="45%">
+          <mj-text>Name: <%= userOrderDetail.userName %></mj-text>
+        </mj-column>
+        <mj-column width="5%"></mj-column>
+        <mj-column width="50%">
+          <mj-text>Date: <%= userOrderDetail.date %></mj-text>
+        </mj-column>
+      </mj-section>
+
+      <!-- Product Table with CSS Borders -->
+      <mj-section>
+        <mj-column>
+          <mj-table class="table-style">
+            <tr>
+              <th>S.N</th>
+              <th>Product Name</th>
+              <th>Qty</th>
+              <th>Rate (Rs)</th>
+              <th>Amount (Rs)</th>
+            </tr>
+            <!-- Use MJML loops to iterate through items -->
+            <% userOrderDetail.products.forEach((item, index) => { %>
+            <tr>
+              <td><%= index + 1 %></td>
+              <td><%= item.food_name %></td>
+              <td><%= item.quantity %></td>
+              <td><%= item.food_rate %></td>
+              <td><%= item.price %></td>
+            </tr>
+            <% }); %>
+            <tr
+          </mj-table>
+        </mj-column>
+      </mj-section>
+
+      <mj-section>
+        <mj-column>
+          <mj-text class="grand-total"
+            >Grand Total: Rs <%= userOrderDetail.total_price %></mj-text
+          >
+        </mj-column>
+      </mj-section>
+    </mj-container>
+  </mj-body>
+</mjml>
